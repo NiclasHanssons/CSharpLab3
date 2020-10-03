@@ -76,16 +76,13 @@ namespace Lab3
                     Console.WriteLine($"This is a .png image. Resolution: {width}x{height} pixels");
                     Console.WriteLine($"File size: {fileSize} byte");
 
-                    string position = "";
-                    string printOutChunk = "";
-                    int nextJump = 0;
+                    int nextChunk = 0;
 
-                    for (int i = 8; i < data.Length; i += (nextJump + 12))
+                    for (int i = 8; i < data.Length; i += (nextChunk + 12))
                     {
-                        position = data[i].ToString("X2") + data[i + 1].ToString("X2") + data[i + 2].ToString("X2") + data[i + 3].ToString("X2");
-                        printOutChunk = data[i + 4].ToString("X2") + data[i + 5].ToString("X2") + data[i + 6].ToString("X2") + data[i + 7].ToString("X2");
-                        nextJump = Convert.ToInt32(position, 16);
-                        Console.WriteLine(($"Chunk type: { Encoding.ASCII.GetString(data, i + 4, 4) }, chunk size: {nextJump + 12} byte"));
+                        string position = data[i].ToString("X2") + data[i + 1].ToString("X2") + data[i + 2].ToString("X2") + data[i + 3].ToString("X2");
+                        nextChunk = Convert.ToInt32(position, 16);
+                        Console.WriteLine(($"Chunk type: { Encoding.ASCII.GetString(data, i + 4, 4) }, chunk size: {nextChunk + 12} byte"));
                     }
                 }
                 else
