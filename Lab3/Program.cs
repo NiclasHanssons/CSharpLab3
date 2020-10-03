@@ -33,9 +33,7 @@ namespace Lab3
                 {
 
                     string hexStringWidth = "";
-
                     
-                    //Här kommer datan som E8 03 00 00 men ändras till 00 00 03 E8 då den läses in bakifrån
                     for (int i = 21; i > 17; i--)
                     {
                         
@@ -43,7 +41,6 @@ namespace Lab3
                     }
                     string hexStringHeight = "";
 
-                    //Här kommer datan som F4 01 00 00 men ändras till 00 00 01 F4 då den läses in bakifrån
                     for (int i = 25; i > 21; i--)
                     {
                         hexStringHeight += data[i].ToString("X2");
